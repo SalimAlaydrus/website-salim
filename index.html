@@ -2,183 +2,203 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kelompok Nalenteng - Smile Version</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil Kelompok</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #fffde7, #f9fbe7);
-      color: #4a4a23;
+      font-family: sans-serif;
+      background-color: orange;
+      color: #333;
       overflow-x: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
     }
 
-    .led-text {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #fbc02d;
-      text-shadow: 0 0 8px #ffeb3b, 0 0 15px #fbc02d;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 100%;
-      animation: ledMove 10s linear infinite;
-    }
-
-    @keyframes ledMove {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-
-    .container {
-      width: 100%;
-      max-width: 700px;
-      background: #fffde7;
-      border-radius: 25px;
-      box-shadow: 0 8px 30px rgba(251, 192, 45, 0.3);
-      padding: 30px 40px;
-      text-align: center;
-      position: relative;
-      z-index: 10;
-    }
-
-    .btn-title {
-      background: linear-gradient(90deg, #ffeb3b 0%, #fbc02d 100%);
-      border: none;
-      border-radius: 30px;
-      padding: 15px 50px;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #4a4a23;
-      cursor: pointer;
-      box-shadow: 0 4px 10px #fbc02daa;
-      transition: all 0.3s ease;
-      margin-bottom: 50px;
-      user-select: none;
-    }
-
-    .btn-title:hover {
-      background: linear-gradient(90deg, #fbc02d 0%, #ffeb3b 100%);
-      box-shadow: 0 6px 18px #fbc02dbb;
-      transform: translateY(-3px);
-    }
-
-    .member-list {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-
-    .member {
-      background: #fff59d;
-      border-radius: 20px;
-      padding: 25px 20px;
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: #5d4a00;
-      box-shadow: 0 4px 14px #fbc02d88;
-      position: relative;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .member:hover {
-      background: #fff176;
-      box-shadow: 0 6px 25px #fbc02dcc;
-    }
-
-    .member::before {
-      content: attr(data-number);
-      position: absolute;
-      top: 50%;
-      left: -50px;
-      transform: translateY(-50%);
-      background: #fbc02d;
-      color: #4a4a23;
-      font-weight: 700;
-      font-family: 'Montserrat', sans-serif;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 0 8px #fbc02dcc;
-    }
-
-    /* Emoji smile particle */
-    .smile-particle {
+    /* Animated Emoji Background */
+    .emoji-bg {
       position: fixed;
-      font-size: 1.8rem;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
-      z-index: 1;
-      animation-name: floatSmile;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
+      z-index: 0;
     }
 
-    @keyframes floatSmile {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.7;
+    .emoji {
+      position: absolute;
+      font-size: 2.5rem;
+      opacity: 0.3;
+      animation: float 18s linear infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
       }
-      50% {
-        transform: translateY(-30px) scale(1.2);
-        opacity: 1;
+      to {
+        transform: translateY(-120vh);
       }
-      100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.7;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: white;
+      z-index: 2;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 5px #fff, 0 0 10px #ff6a00, 0 0 15px #ff9500;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      background: rgba(255,255,255,0.1);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      color: white;
+    }
+
+    .members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: white;
+      color: #333;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-stack span {
+      display: inline-block;
+      background: #fc4a1a;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: white;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Emoji smile background -->
+  <div class="emoji-bg" id="emojiBg"></div>
 
-  <div class="led-text">KELOMPOK NALENTENG</div>
+  <header>
+    <h1>KELOMPOK TSUKASAXD</h1>
+  </header>
 
-  <div class="container">
-    <button class="btn-title">NAMA ANGGOTA</button>
-    <div class="member-list">
-      <div class="member" data-number="1">
-        Nalendra Putra Wicaksana (1462300034)
-      </div>
-      <div class="member" data-number="2">
-        Salim Alaydrus (1462300043)
-      </div>
-      <div class="member" data-number="3">
-        Muhammad Fadli (1462300052)
-      </div>
-    </div>
-  </div>
+  <main>
+    <section>
+      <h2>Tentang Kelompok</h2>
+      <p>Kami adalah kelompok yang terdiri dari tiga mahasiswa Teknik Informatika dengan fokus pengembangan web.</p>
+    </section>
 
+    <section>
+      <h2>Anggota Kelompok</h2>
+      <div class="members">
+        <div class="card">
+          <img src="nalen.jpg" alt="Nalendra Putra Wicaksana" />
+          <h3>Nalendra Putra Wicaksana</h3>
+          <p><strong>Ketua</strong></p>
+          <p>NIM: 1462300034</p>
+          <p>Email: nalendra.putra@email.com</p>
+          <p>Pesan: saya top global selena</p>
+        </div>
+        <div class="card">
+          <img src="salim.jpg" alt="Salim Alaydrus" />
+          <h3>Salim Alaydrus</h3>
+          <p><strong>Anggota</strong></p>
+          <p>NIM: 1462300043</p>
+          <p>Email: salim.alaydrus@email.com</p>
+          <p>Pesan: pengembara dari negeri ampel</p>
+        </div>
+        <div class="card">
+          <img src="fadli.jpg" alt="Muhammad Fadli" />
+          <h3>Muhammad Fadli</h3>
+          <p><strong>Anggota</strong></p>
+          <p>NIM: 1462300052</p>
+          <p>Email: muhammad.fadli@email.com</p>
+          <p>Pesan: Hanya Seorang NPC</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Proyek Saat Ini</h2>
+      <h3>Website Profil Kelompok</h3>
+      <p>Membuat website yang menampilkan profil anggota dan keahlian dalam pengembangan web.</p>
+      <div class="tech-stack">
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>Responsive Design</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Kelompok Tsukasaxd. Semua hak dilindungi.</p>
+  </footer>
+
+  <!-- JS untuk menampilkan emoji smile 😊 -->
   <script>
-    const smileCount = 20;
-    const smiles = ['😊', '😄', '😁', '😆', '😃'];
-    for (let i = 0; i < smileCount; i++) {
-      const smile = document.createElement('div');
-      smile.classList.add('smile-particle');
-      smile.textContent = smiles[Math.floor(Math.random() * smiles.length)];
-      smile.style.left = `${Math.random() * 100}vw`;
-      smile.style.top = `${Math.random() * 100}vh`;
-      smile.style.animationDuration = `${5 + Math.random() * 5}s`;
-      smile.style.animationDelay = `${Math.random() * 5}s`;
-      document.body.appendChild(smile);
+    const emojiContainer = document.getElementById("emojiBg");
+
+    for (let i = 0; i < 25; i++) {
+      const emoji = document.createElement("div");
+      emoji.classList.add("emoji");
+      emoji.textContent = "🍯🧸🥎🧶";
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.top = Math.random() * 100 + "vh";
+      emoji.style.animationDuration = (10 + Math.random() * 20) + "s";
+      emojiContainer.appendChild(emoji);
     }
   </script>
-
 </body>
 </html>
