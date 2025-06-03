@@ -2,90 +2,185 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Website Arab Gokill</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kelompok Nalenteng - Smile Version</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      text-align: center;
-      color: white;
-      background: url('https://i.imgur.com/vOeXjVX.png') no-repeat center top;
-      background-size: contain;
-      background-color: #ffccff;
-      min-height: 100vh;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #fffde7, #f9fbe7);
+      color: #4a4a23;
       overflow-x: hidden;
-      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
     }
 
-    h1 {
-      padding-top: 200px;
-      font-size: 32px;
-      text-shadow: 2px 2px 4px #000;
-    }
-
-    p {
-      font-size: 18px;
-      color: #fff;
-      text-shadow: 1px 1px 2px #000;
-    }
-
-    .anggota {
-      margin-top: 30px;
-      font-size: 16px;
-      color: #fff;
-      text-shadow: 1px 1px 2px #000;
-    }
-
-    .donuts {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 200px;
+    .led-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #fbc02d;
+      text-shadow: 0 0 8px #ffeb3b, 0 0 15px #fbc02d;
+      white-space: nowrap;
       overflow: hidden;
-      pointer-events: none;
+      width: 100%;
+      animation: ledMove 10s linear infinite;
     }
 
-    .donuts img {
+    @keyframes ledMove {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      background: #fffde7;
+      border-radius: 25px;
+      box-shadow: 0 8px 30px rgba(251, 192, 45, 0.3);
+      padding: 30px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .btn-title {
+      background: linear-gradient(90deg, #ffeb3b 0%, #fbc02d 100%);
+      border: none;
+      border-radius: 30px;
+      padding: 15px 50px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #4a4a23;
+      cursor: pointer;
+      box-shadow: 0 4px 10px #fbc02daa;
+      transition: all 0.3s ease;
+      margin-bottom: 50px;
+      user-select: none;
+    }
+
+    .btn-title:hover {
+      background: linear-gradient(90deg, #fbc02d 0%, #ffeb3b 100%);
+      box-shadow: 0 6px 18px #fbc02dbb;
+      transform: translateY(-3px);
+    }
+
+    .member-list {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .member {
+      background: #fff59d;
+      border-radius: 20px;
+      padding: 25px 20px;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #5d4a00;
+      box-shadow: 0 4px 14px #fbc02d88;
+      position: relative;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .member:hover {
+      background: #fff176;
+      box-shadow: 0 6px 25px #fbc02dcc;
+    }
+
+    .member::before {
+      content: attr(data-number);
       position: absolute;
-      animation: float 6s infinite ease-in-out;
+      top: 50%;
+      left: -50px;
+      transform: translateY(-50%);
+      background: #fbc02d;
+      color: #4a4a23;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 8px #fbc02dcc;
     }
 
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0px); }
+    /* Emoji smile particle */
+    .smile-particle {
+      position: fixed;
+      font-size: 1.8rem;
+      pointer-events: none;
+      z-index: 1;
+      animation-name: floatSmile;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
     }
 
-    footer {
-      margin-top: 100px;
-      font-size: 14px;
-      color: #eee;
+    @keyframes floatSmile {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateY(-30px) scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>SELAMAT DATANG DI WEBSITE ARAB GOKILL</h1>
-  <p>Ini adalah halaman web pertama saya yang dihosting menggunakan layanan hosting gratis.</p>
+  <div class="led-text">KELOMPOK NALENTENG</div>
 
-  <div class="anggota">
-    <p>Salim Alaydrus (1462300043)</p>
-    <p>Muhammad Fadli (1462300052)</p>
-    <p>Nalendra Putra Wicaksana (1462300034)</p>
+  <div class="container">
+    <button class="btn-title">NAMA ANGGOTA</button>
+    <div class="member-list">
+      <div class="member" data-number="1">
+        Nalendra Putra Wicaksana (1462300034)
+      </div>
+      <div class="member" data-number="2">
+        Salim Alaydrus (1462300043)
+      </div>
+      <div class="member" data-number="3">
+        Muhammad Fadli (1462300052)
+      </div>
+    </div>
   </div>
 
-  <div class="donuts">
-    <img src="https://i.imgur.com/ZyB4fGk.png" alt="donut" style="left: 10%; width: 50px;">
-    <img src="https://i.imgur.com/ZyB4fGk.png" alt="donut" style="left: 30%; width: 80px;">
-    <img src="https://i.imgur.com/ZyB4fGk.png" alt="donut" style="left: 60%; width: 60px;">
-    <img src="https://i.imgur.com/ZyB4fGk.png" alt="donut" style="left: 80%; width: 40px;">
-  </div>
-
-  <footer>
-    &copy; 2025 Arab Gokill Team - Informatika UNTAG
-  </footer>
+  <script>
+    const smileCount = 20;
+    const smiles = ['😊', '😄', '😁', '😆', '😃'];
+    for (let i = 0; i < smileCount; i++) {
+      const smile = document.createElement('div');
+      smile.classList.add('smile-particle');
+      smile.textContent = smiles[Math.floor(Math.random() * smiles.length)];
+      smile.style.left = `${Math.random() * 100}vw`;
+      smile.style.top = `${Math.random() * 100}vh`;
+      smile.style.animationDuration = `${5 + Math.random() * 5}s`;
+      smile.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(smile);
+    }
+  </script>
 
 </body>
 </html>
